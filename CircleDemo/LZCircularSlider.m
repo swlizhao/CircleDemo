@@ -11,9 +11,7 @@
 #define  ToAng(rad)  ( (180.0 * (rad)) / M_PI )//弧度转化为度数
 #define SQR(x)			( (x) * (x) )g
 
-@interface LZCircularSlider ()
-
-{
+@interface LZCircularSlider () {
     int  angle;
     int  downAngle;
     NSInteger radius;
@@ -26,9 +24,7 @@
 
 @implementation LZCircularSlider
 
-
--(instancetype)initWithFrame:(CGRect)frame
-{
+- (instancetype)initWithFrame:(CGRect)frame {
     self =[super initWithFrame:frame];
     if (self) {
         

@@ -8,9 +8,7 @@
 
 #import "ViewController.h"
 #import "LZCircularSlider.h"
-@interface ViewController ()
-
-{
+@interface ViewController () {
 
     CGRect frame;
 }
@@ -38,6 +36,7 @@
     frame =CGRectMake(self.view.frame.size.width/2-100,self.view.frame.size.height/2-100, 200, 200);
     [self initBgView];
     [self initSlider];
+    self.view.backgroundColor = [UIColor groupTableViewBackgroundColor];
 }
 -(void)initBgView{
     _bgView =[[UIView alloc]init];
@@ -132,10 +131,6 @@
   
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
 
 
 @end
