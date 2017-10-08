@@ -8,6 +8,7 @@
 
 #import "ViewController.h"
 #import "LZCircularSlider.h"
+
 @interface ViewController () {
 
     CGRect frame;
@@ -22,31 +23,29 @@
 @property(nonatomic,strong)UILabel *centerMoneyLabel;
 @property(nonatomic,strong)LZCircularSlider *slider;
 
+
 @end
 
 @implementation ViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    /*
-
-     在圆弧开始跟结束的值随着滑动有误差，请到封装的代码里面做判断，进行调整
-     
-     */
-    frame =CGRectMake(self.view.frame.size.width/2-100,self.view.frame.size.height/2-100, 200, 200);
-    [self initBgView];
-    [self initSlider];
-    self.view.backgroundColor = [UIColor groupTableViewBackgroundColor];
+  /** 在圆弧开始跟结束的值随着滑动有误差，请到封装的代码里面做判断，进行调整 */
+   frame = CGRectMake(self.view.frame.size.width/2-100,self.view.frame.size.height/2-100, 200, 200);
+   [self initBgView];
+   [self initSlider];
+    self.view.backgroundColor = [UIColor colorWithRed:242./255. green:242./255. blue:242./255. alpha:1.];
 }
--(void)initBgView{
+
+- (void)initBgView {
     _bgView =[[UIView alloc]init];
     _bgView.frame = frame;
     _bgView.backgroundColor =[UIColor whiteColor];
     [self.view addSubview:_bgView];
-    _bgImageView =[[UIImageView alloc]init];
+    _bgImageView = [[UIImageView alloc]init];
     _bgImageView.frame =CGRectMake(35, self.bgView.frame.size.height/2-25, self.bgView.frame.size.width-70, 50);
     _bgImageView.backgroundColor =[UIColor clearColor];
-    _bgImageView.image =[UIImage imageNamed:@"椭圆阴影"];
+    _bgImageView.image = [UIImage imageNamed:@"椭圆阴影"];
     [self.bgView addSubview:_bgImageView];
     _centerLabel =[[UILabel alloc]initWithFrame:CGRectMake(10, 10, self.bgImageView.frame.size.width-20, 15)];
     _centerLabel.textAlignment =1;
@@ -96,36 +95,38 @@
 
 }
 -(void)initSlider{
-    _slider =[[LZCircularSlider alloc]initWithFrame:frame];
+    _slider = [[LZCircularSlider alloc]initWithFrame:frame];
     /*
-       following number must set,or have issue
+       following number must setting,or have issue
      */
     _slider.lineWidth =8;
-    _slider.maximumValue =100;
-    _slider.minimumValue =1;
-    _slider.currentValue =1.0;
+    _slider.upMaximumValue =100;
+    _slider.upMinimumValue =1;
+    _slider.upCurrentValue =1.0;
     _slider.downCurrentValue =1.0;
     _slider.downMaximumValue =100;
     _slider.downMinimumValue =1;
-    _slider.unfilledColor =[UIColor colorWithRed:192/255.0 green:192/255.0 blue:192/255.0 alpha:1];
-    _slider.filledColor =[UIColor colorWithRed:255/255.0 green:127/255.0 blue:80/255.0 alpha:1];
+    _slider.upBgStrokeColor = [UIColor colorWithRed:192/255.0 green:192/255.0 blue:192/255.0 alpha:1];
+    _slider.downBgStrokeColor = [UIColor colorWithRed:192/255.0 green:192/255.0 blue:192/255.0 alpha:1];
+    _slider.upfilledColor =[UIColor colorWithRed:255/255.0 green:127/255.0 blue:80/255.0 alpha:1];
     _slider.downFilledColor =[UIColor colorWithRed:65/255.0 green:105/255.0 blue:225/255.0 alpha:1];
     _slider.backgroundColor =[UIColor clearColor];
     [_slider addTarget:self action:@selector(valueChanged:) forControlEvents:UIControlEventValueChanged];
     [self.view addSubview:_slider];
 
 }
--(void)valueChanged:(LZCircularSlider*)slider {
+
+- (void)valueChanged:(LZCircularSlider*)slider {
     NSString * topString;
     NSString * downString;
     NSString * centerString;
-    topString = [NSString stringWithFormat:@"%d",slider.currentValue];
-    downString =[NSString stringWithFormat:@"%d",slider.downCurrentValue];
-    centerString =[NSString stringWithFormat:@"%f",(slider.currentValue+(slider.currentValue)*0.05)/slider.downCurrentValue];
-    _topMoneyLabel.text =[NSString stringWithFormat:@"¥%@",topString];
+    topString = [NSString stringWithFormat:@"%d",slider.upCurrentValue];
+    downString = [NSString stringWithFormat:@"%d",slider.downCurrentValue];
+    centerString = [NSString stringWithFormat:@"%f",(slider.upCurrentValue+(slider.upCurrentValue)*0.05)/slider.downCurrentValue];
+    _topMoneyLabel.text = [NSString stringWithFormat:@"¥%@",topString];
     _downMoneyLabel.text =[NSString stringWithFormat:@"%@个月",downString];
     _centerMoneyLabel.text =[NSString stringWithFormat:@"¥%@",centerString];
-    NSLog(@"upCurrentValue==%d=====",slider.currentValue);
+    NSLog(@"upCurrentValue==%d=====",slider.upCurrentValue);
     NSLog(@"downCurrentValue====%d",slider.downCurrentValue);
     NSLog(@"centerString====%@",centerString);
   

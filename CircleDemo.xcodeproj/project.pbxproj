@@ -221,6 +221,7 @@
 				TargetAttributes = {
 					1810BCEA1E4430D400B007CF = {
 						CreatedOnToolsVersion = 8.2.1;
+						DevelopmentTeam = 7X8V8RKK72;
 						ProvisioningStyle = Automatic;
 					};
 					1810BD031E4430D500B007CF = {
@@ -442,6 +443,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = 7X8V8RKK72;
 				INFOPLIST_FILE = CircleDemo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = LIZHAO.CircleDemo;
@@ -453,6 +455,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = 7X8V8RKK72;
 				INFOPLIST_FILE = CircleDemo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = LIZHAO.CircleDemo;
